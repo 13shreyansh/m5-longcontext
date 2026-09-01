@@ -1,0 +1,54 @@
+{
+  "action_time_identity_gates": {
+    "entrant_team_attribution": false,
+    "project_name": false
+  },
+  "blocking_gate_ids": [
+    "project_name",
+    "entrant_team_attribution",
+    "video_draft_human_approved",
+    "public_repository_url",
+    "public_video_url",
+    "repository_pushed",
+    "repository_public",
+    "video_published",
+    "devpost_submitted"
+  ],
+  "boundaries": {
+    "external_action_performed_by_this_script": false,
+    "official_mfu_or_combined_score_claimed": false,
+    "organizer_attachment_redistribution_authorized": false,
+    "ready_for_external_submission": false,
+    "video_generation_paused_by_user": true
+  },
+  "external_action_gates": {
+    "devpost_submitted": false,
+    "public_repository_url": false,
+    "public_video_url": false,
+    "repository_public": false,
+    "repository_pushed": false,
+    "video_published": false
+  },
+  "local_completion_gates": {
+    "final_contention_controlled_row_14_measurement": true,
+    "official_mfu_or_combined_score_available": false,
+    "rows_1_13_evidence_complete": true
+  },
+  "local_human_review_gates": {
+    "video_draft_human_approved": false
+  },
+  "schema_version": 1,
+  "sources": {
+    "champion_manifest": "docs/CHAMPION_MANIFEST.json",
+    "devpost_draft": "docs/DEVPOST_DRAFT.json",
+    "submission_contract": "docs/SUBMISSION_CONTRACT.md",
+    "video_storyboard": "docs/VIDEO_STORYBOARD.json"
+  },
+  "status": "local_finalization_incomplete",
+  "verified_local_surfaces": {
+    "champion_source_hashes": true,
+    "devpost_claims_match_champion": true,
+    "video_assets_and_captions_current": true,
+    "video_storyboard_matches_champion": true
+  }
+}

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-label="A bounded Transformer path for one personal Apple GPU">
+  <rect width="1920" height="1080" fill="#07090d"/>
+  <rect x="0" y="0" width="18" height="1080" fill="#25f4ee"/>
+  <rect x="18" y="0" width="7" height="1080" fill="#fe2c55"/>
+  <text x="92" y="112" fill="#f7f9fc" font-family="-apple-system, BlinkMacSystemFont, Inter, sans-serif" font-size="64" font-weight="750">A bounded Transformer path for one personal Apple GPU</text>
+  <text x="94" y="168" fill="#aeb8c5" font-family="-apple-system, BlinkMacSystemFont, Inter, sans-serif" font-size="27">The published stress row stays PyTorch-compatible without allocating O(S²) attention scores.</text>
+  
+  <rect x="92" y="230" width="360" height="220" rx="28" fill="#11151c" stroke="#25f4ee" stroke-width="3"/>
+  <text x="132" y="292" fill="#25f4ee" font-family="-apple-system, sans-serif" font-size="25" font-weight="700">01 · INPUT CONTRACT</text>
+  <text x="132" y="347" fill="#f7f9fc" font-family="-apple-system, sans-serif" font-size="34" font-weight="650">PyTorch float32</text>
+  <text x="132" y="393" fill="#aeb8c5" font-family="ui-monospace, monospace" font-size="22">B32 · S100000 · D1024</text>
+  <path d="M452 340 H518" stroke="#aeb8c5" stroke-width="6"/><path d="M508 326 L530 340 L508 354" fill="none" stroke="#aeb8c5" stroke-width="6"/>
+  <rect x="530" y="230" width="390" height="220" rx="28" fill="#11151c" stroke="#fe2c55" stroke-width="3"/>
+  <text x="570" y="292" fill="#fe2c55" font-family="-apple-system, sans-serif" font-size="25" font-weight="700">02 · DIRECT-HEAD QKV</text>
+  <text x="570" y="347" fill="#f7f9fc" font-family="-apple-system, sans-serif" font-size="34" font-weight="650">One native write</text>
+  <text x="570" y="393" fill="#aeb8c5" font-family="ui-monospace, monospace" font-size="22">BM32 · BN512 · BK256</text>
+  <path d="M920 340 H986" stroke="#aeb8c5" stroke-width="6"/><path d="M976 326 L998 340 L976 354" fill="none" stroke="#aeb8c5" stroke-width="6"/>
+  <rect x="998" y="230" width="420" height="220" rx="28" fill="#11151c" stroke="#25f4ee" stroke-width="3"/>
+  <text x="1038" y="292" fill="#25f4ee" font-family="-apple-system, sans-serif" font-size="25" font-weight="700">03 · BOUNDED ATTENTION</text>
+  <text x="1038" y="347" fill="#f7f9fc" font-family="-apple-system, sans-serif" font-size="34" font-weight="650">Online causal softmax</text>
+  <text x="1038" y="393" fill="#aeb8c5" font-family="ui-monospace, monospace" font-size="22">BQ256 · BK48 · D64</text>
+  <path d="M1418 340 H1484" stroke="#aeb8c5" stroke-width="6"/><path d="M1474 326 L1496 340 L1474 354" fill="none" stroke="#aeb8c5" stroke-width="6"/>
+  <rect x="1496" y="230" width="330" height="220" rx="28" fill="#11151c" stroke="#52e08a" stroke-width="3"/>
+  <text x="1536" y="292" fill="#52e08a" font-family="-apple-system, sans-serif" font-size="25" font-weight="700">04 · OUTPUT</text>
+  <text x="1536" y="347" fill="#f7f9fc" font-family="-apple-system, sans-serif" font-size="34" font-weight="650">Float32 boundary</text>
+  <text x="1536" y="393" fill="#aeb8c5" font-family="-apple-system, sans-serif" font-size="22">Residual · FFN · norm</text>
+  <rect x="92" y="520" width="1734" height="362" rx="32" fill="#11151c"/>
+  <text x="142" y="590" fill="#f7f9fc" font-family="-apple-system, sans-serif" font-size="34" font-weight="700">Why the 100,000-token row becomes runnable</text>
+  <text x="142" y="660" fill="#25f4ee" font-family="-apple-system, sans-serif" font-size="54" font-weight="800">Never materialize the quadratic score tensor.</text>
+  <text x="142" y="724" fill="#aeb8c5" font-family="-apple-system, sans-serif" font-size="29">Process one batch item at a time · stream key blocks · keep float32 online-softmax state.</text>
+  <rect x="142" y="772" width="740" height="68" rx="18" fill="#16272b"/>
+  <text x="176" y="816" fill="#52e08a" font-family="-apple-system, sans-serif" font-size="25" font-weight="700">SUPPORTED → Apple M5 Pro · Metal 4 · MLX NAX</text>
+  <rect x="920" y="772" width="840" height="68" rx="18" fill="#27171c"/>
+  <text x="954" y="816" fill="#fe2c55" font-family="-apple-system, sans-serif" font-size="25" font-weight="700">UNSUPPORTED → fail closed to the preceding bounded route</text>
+  <text x="94" y="1028" fill="#aeb8c5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20">TikTok TechJam 2026 · Track 3 · evidence card generated from CHAMPION_MANIFEST.json</text>
+</svg>

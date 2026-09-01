@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "snapshot_sgt": "2026-08-31T19:01:57.941795+08:00",
+  "status": "final_contention_controlled_exact_measurement_complete",
+  "production_code_commit": "622c47c",
+  "clean_export_evidence_commit": "5ec7121",
+  "declared_machine": "Apple M5 Pro, 20-core GPU",
+  "framework": "PyTorch 2.8.0 MPS plus Metal 4",
+  "rows_1_13": {
+    "matmul_precision": "high",
+    "complete_session_speedups": [
+      2.51308,
+      2.523037,
+      2.508106
+    ],
+    "arithmetic_mean_speedup": 2.514741,
+    "geometric_mean_speedup": 2.514733,
+    "fresh_float32_passed": 117,
+    "fresh_float32_total": 117,
+    "clean_export_rows_passed": 13,
+    "clean_export_rows_total": 13
+  },
+  "row_14": {
+    "shape": [
+      32,
+      100000,
+      1024,
+      16,
+      1024,
+      2
+    ],
+    "attention_tile": [
+      256,
+      48,
+      64,
+      16,
+      1
+    ],
+    "qkv_tile": [
+      32,
+      512,
+      256,
+      1,
+      8
+    ],
+    "qkv_balanced_session_speedups": [
+      1.011633,
+      1.021096,
+      1.021071,
+      1.022742
+    ],
+    "qkv_balanced_geometric_mean": 1.019126,
+    "qkv_positive_pairs": 33,
+    "qkv_total_pairs": 36,
+    "preceding_route_exact_seconds": [
+      69.605358456,
+      97.172911045,
+      131.088197166
+    ],
+    "preceding_route_organizer_default_seconds": 98.58898521,
+    "current_route_exact_b32_status": "complete_contention_controlled_protocol",
+    "full_explicit_reference_status": "infeasible_18.626_TiB_score_tensor",
+    "current_route_exact_b32_seconds": [
+      54.269253125000006,
+      51.895878706000005,
+      52.002793706999995
+    ],
+    "current_route_exact_b32_median_seconds": 52.002793706999995,
+    "current_route_exact_b32_min_seconds": 51.895878706000005,
+    "current_route_exact_b32_max_seconds": 54.269253125000006,
+    "current_route_exact_b32_max_over_min": 1.0457333892050584,
+    "current_route_exact_b32_all_outputs_finite": true,
+    "current_route_exact_b32_summary_sha256": "c4d7aca767adee87a8a2dd70c6a82b4d080e7fe0b4109388b4fa0c7e0613d91c",
+    "current_route_exact_b32_log_sha256": [
+      "ea999168b0a2c634c302591419642be7b9438ea6ebd766cdf9fcbe376de592cc",
+      "36b1ea6dfc527371857a3b48d5963b3841b937f10168ac14414f4256953f75b7",
+      "4416411d8e9e6a5f215c71320388a05ef73dfe64f88f8166eb4ef1cbf7f2851c"
+    ],
+    "current_route_exact_b32_protocol": {
+      "runs": 3,
+      "seed": 9200,
+      "cooldown_seconds": 300,
+      "matmul_precision": "high",
+      "started_at_local": "2026-08-31T18:46:10.373967+08:00",
+      "finished_at_local": "2026-08-31T19:01:57.941795+08:00",
+      "control_policy": "power_agnostic_external_compute_contention_monitoring",
+      "power_state_checked": false,
+      "runtime_process_poll_seconds": 1,
+      "quiet_window_seconds": 60,
+      "quiet_window_before_each_run": true
+    }
+  },
+  "verification": {
+    "pytest_passed": 111,
+    "official_hashes": "pass",
+    "solution_provenance": "pass",
+    "clean_export": "pass",
+    "official_mfu_or_combined_score": null
+  },
+  "upstreams": {
+    "triton_msl_commit": "182c1820fd24a836d565e1da842f28414de64084",
+    "mlx_commit": "3f0bd54ff0c0af5b88530191d5df31010ce54fcd"
+  },
+  "solution_file_sha256": {
+    "solution/optimized_transformer.py": "2bc156d2733206127ad9ee1ad2d645063fe51f572c7d08d6c283114f37999540",
+    "solution/mlx_nax_qkv_runtime.py": "bc1ef3b32ea071c343886422f6df779a8d8d45f79d975647ce1b0e7890295059",
+    "solution/mps_metal4_qkv_head_layout.mm": "b4586389f89155cbd431b60c02780d8fea290cde4fed26b1f3658a946da519fa",
+    "solution/mlx_nax_runtime.py": "8b702f5051509f19e6981008057785b4f24123d0c2b4f539cc3661d6d4d9cb6e",
+    "solution/mps_metal4_attention.mm": "7a4dbc10af20010e5895746f6ef2124e5c2b8e1be142304ca5db2a309f1e5a02",
+    "requirements-solution.txt": "6304bea39686ea0956f835f96a7dad462426e450b0965355bd9e7b388214333e"
+  },
+  "commands": {
+    "release_manifest": ".venv/bin/python scripts/verify_release_manifest.py",
+    "provenance": ".venv/bin/python scripts/verify_solution_provenance.py",
+    "tests": "PYTHONPATH=. .venv/bin/python -m pytest -q",
+    "final_row_14_protocol": ".venv/bin/python scripts/run_case14_final_protocol.py"
+  },
+  "publication_state": {
+    "submitted": false,
+    "pushed": false,
+    "public_repository": false,
+    "video_published": false
+  }
+}

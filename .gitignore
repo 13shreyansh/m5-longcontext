@@ -1,0 +1,17 @@
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+build/
+dist/
+artifacts/
+*.log
+.DS_Store
+
+# Organizer attachments are local evaluator inputs with no visible
+# redistribution licence. Keep the explanatory file only.
+official/*
+!official/README.md
+

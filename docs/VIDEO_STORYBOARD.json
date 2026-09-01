@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "status": "final_contention_controlled_exact_measurement_complete",
+  "target_max_seconds": 180,
+  "source_manifest": "docs/CHAMPION_MANIFEST.json",
+  "claims": {
+    "rows_1_13_arithmetic_mean_speedup": 2.514741,
+    "row_14_qkv_incremental_geometric_mean": 1.019126,
+    "row_14_preceding_route_high_seconds": 98.58898521,
+    "row_14_current_route_exact_b32_status": "complete_contention_controlled_protocol",
+    "row_14_current_route_exact_b32_seconds": [
+      54.269253125000006,
+      51.895878706000005,
+      52.002793706999995
+    ],
+    "public_safe_package_tests_passed": 33,
+    "public_safe_package_tests_skipped": 1,
+    "authorized_input_package_tests_passed": 101,
+    "official_mfu_or_combined_score": null,
+    "video_published": false
+  },
+  "sections": [
+    {
+      "id": "hook",
+      "start_second": 0,
+      "end_second": 12,
+      "visual": "Published row-14 shape beside the 18.626-TiB explicit score-tensor calculation.",
+      "narration": "The hardest published Transformer case asks a 64-gigabyte Mac to process one hundred thousand tokens, while the explicit float32 attention matrix alone would need 18.626 tebibytes. Our first task was therefore not a small speed trick; it was making the exact workload bounded and runnable."
+    },
+    {
+      "id": "contract",
+      "start_second": 12,
+      "end_second": 30,
+      "visual": "Apple M5 Pro hardware inventory, 14-row table, and organizer tolerance formula.",
+      "narration": "We target our own 20-core-GPU Apple M5 Pro, as allowed in the workshop. All fourteen rows use float32 input and output. A result passes when absolute error is at most 0.002 or relative error is at most two percent, so every optimization is checked before it is timed."
+    },
+    {
+      "id": "ordinary_rows",
+      "start_second": 30,
+      "end_second": 58,
+      "visual": "Rows 1-13 latency table with three complete-session aggregate points and pass counts.",
+      "narration": "For rows one through thirteen, the solution combines packed projections, safe internal half precision, PyTorch attention, frozen fixed-shape graphs, and small fused Metal operations only where each route won. Three complete organizer-default sessions measured 2.513080, 2.523037, and 2.508106 times baseline, averaging 2.514741 times. All 117 fresh float32 comparisons passed."
+    },
+    {
+      "id": "stress_architecture",
+      "start_second": 58,
+      "end_second": 104,
+      "visual": "Simple pipeline diagram: direct-head QKV -> bounded NAX attention -> fp32 output/FFN, with no quadratic tensor.",
+      "narration": "Row fourteen is processed one batch item at a time, never materializing quadratic attention. A custom Metal 4 bridge runs Apple's MIT-licensed MLX NAX primitive directly on PyTorch MPS storage. The promoted QKV kernel writes all 48 heads directly using a 32 by 512 tile. The attention kernel uses 256 query rows by 48 key rows, keeps float32 softmax state, pads only query rows for alignment, and automatically falls back if the native route is unavailable."
+    },
+    {
+      "id": "stress_evidence",
+      "start_second": 104,
+      "end_second": 137,
+      "visual": "S8192 reference pass, four balanced S100000 QKV ratios, and the exact-run status card.",
+      "narration": "The current direct-head QKV change passed the explicit 8,192-token reference, remained identical at larger lengths, and won four balanced 100,000-token sessions by a 1.019126 geometric mean. The preceding safe route completed full batch 32 under the organizer-default setting in 98.589 seconds. The promoted route completed three contention-controlled batch-32 runs in 54.269, 51.896, 52.003 seconds, with a 52.003-second median and all outputs finite. Power state was not inspected or used as a gate. The preceding route remains separately labelled."
+    },
+    {
+      "id": "reproducibility",
+      "start_second": 137,
+      "end_second": 163,
+      "visual": "Champion hash verifier, sanitized release verifier, fresh-cache bridge status, licences, and test summary.",
+      "narration": "The champion is locked by six production hashes. A deterministic public-safe package excludes the unlicensed organizer attachment and private history and preserves both MIT licences. Its public-safe gate passes 33 tests with one expected missing-input skip; a checksum-matched authorized-input copy passes all 101 tests. Unsupported inputs fail closed."
+    },
+    {
+      "id": "limits_and_close",
+      "start_second": 163,
+      "end_second": 178,
+      "visual": "Limitations card followed by final all-row scorecard and repository reproduction command.",
+      "narration": "We do not invent MFU, full-length reference equality, or cross-session causal speedups. The result is device-specific; power state is not inspected or controlled, and every rejected idea stays explicit. The contribution is a measured Apple-native Transformer path, a runnable giant row, and an evidence trail that makes every performance claim auditable."
+    }
+  ],
+  "required_final_captures": [
+    "Declared Apple M5 Pro hardware",
+    "Rows 1-13 final synchronized score table and correctness counts",
+    "Contention-controlled promoted-route row-14 summary or an explicit pending card",
+    "S8192 organizer-reference pass and full-length continuity evidence",
+    "Champion manifest verifier and source commit",
+    "Sanitized release verifier, both third-party licences, and fresh test result",
+    "AI/source disclosure and explicit limitations"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "status": "local_draft_not_submitted",
+  "project_name": null,
+  "entrant_team_attribution": null,
+  "public_repository_url": null,
+  "public_video_url": null,
+  "source_manifest": "docs/CHAMPION_MANIFEST.json",
+  "claims": {
+    "declared_machine": "Apple M5 Pro, 20-core GPU",
+    "rows_1_13_arithmetic_mean_speedup": 2.514741,
+    "rows_1_13_fresh_float32_passed": 117,
+    "rows_1_13_fresh_float32_total": 117,
+    "row_14_qkv_incremental_geometric_mean": 1.019126,
+    "row_14_preceding_route_high_seconds": 98.58898521,
+    "row_14_current_route_exact_b32_status": "complete_contention_controlled_protocol",
+    "row_14_current_route_exact_b32_seconds": [
+      54.269253125000006,
+      51.895878706000005,
+      52.002793706999995
+    ],
+    "official_mfu_or_combined_score": null
+  },
+  "publication_state": {
+    "submitted": false,
+    "pushed": false,
+    "public_repository": false,
+    "video_published": false
+  },
+  "built_with": [
+    "Codex AI coding agent (exact host-visible model label unavailable)",
+    "Python 3.9",
+    "PyTorch 2.8",
+    "Apple MPS",
+    "Metal 4",
+    "Apple MLX NAX",
+    "Objective-C++",
+    "Ninja"
+  ],
+  "required_action_time_fields": [
+    "Final project name",
+    "Verified entrant and team contribution attribution",
+    "Final promoted-route contention-controlled row-14 result or explicit pending statement",
+    "Final cumulative AI model/tool/time/token disclosure",
+    "Public sanitized repository URL",
+    "Public three-minute-or-shorter YouTube URL",
+    "Final Devpost receipt after separately authorized submission"
+  ]
+}

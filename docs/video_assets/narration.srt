@@ -1,0 +1,122 @@
+1
+00:00:00,000 --> 00:00:06,933
+The hardest published Transformer case asks a 64-gigabyte Mac to
+process one hundred thousand tokens, while the explicit float32
+attention matrix alone would need 18.626 tebibytes.
+
+2
+00:00:06,933 --> 00:00:12,000
+Our first task was therefore not a small speed trick; it was making
+the exact workload bounded and runnable.
+
+3
+00:00:12,000 --> 00:00:16,875
+We target our own 20-core-GPU Apple M5 Pro, as allowed in the
+workshop.
+
+4
+00:00:16,875 --> 00:00:19,875
+All fourteen rows use float32 input and output.
+
+5
+00:00:19,875 --> 00:00:30,000
+A result passes when absolute error is at most 0.002 or relative
+error is at most two percent, so every optimization is checked
+before it is timed.
+
+6
+00:00:30,000 --> 00:00:46,571
+For rows one through thirteen, the solution combines packed
+projections, safe internal half precision, PyTorch attention, frozen
+fixed-shape graphs, and small fused Metal operations only where each
+route won.
+
+7
+00:00:46,571 --> 00:00:54,571
+Three complete organizer-default sessions measured 2.513080,
+2.523037, and 2.508106 times baseline, averaging 2.514741 times.
+
+8
+00:00:54,571 --> 00:00:58,000
+All 117 fresh float32 comparisons passed.
+
+9
+00:00:58,000 --> 00:01:06,364
+Row fourteen is processed one batch item at a time, never
+materializing quadratic attention.
+
+10
+00:01:06,364 --> 00:01:16,519
+A custom Metal 4 bridge runs Apple's MIT-licensed MLX NAX primitive
+directly on PyTorch MPS storage.
+
+11
+00:01:16,519 --> 00:01:25,481
+The promoted QKV kernel writes all 48 heads directly using a 32 by
+512 tile.
+
+12
+00:01:25,481 --> 00:01:44,000
+The attention kernel uses 256 query rows by 48 key rows, keeps
+float32 softmax state, pads only query rows for alignment, and
+automatically falls back if the native route is unavailable.
+
+13
+00:01:44,000 --> 00:01:55,550
+The current direct-head QKV change passed the explicit 8,192-token
+reference, remained identical at larger lengths, and won four
+balanced 100,000-token sessions by a 1.019126 geometric mean.
+
+14
+00:01:55,550 --> 00:02:01,738
+The preceding safe route completed full batch 32 under the
+organizer-default setting in 98.589 seconds.
+
+15
+00:02:01,738 --> 00:02:10,400
+The promoted route completed three contention-controlled batch-32
+runs in 54.269, 51.896, 52.003 seconds, with a 52.003-second median
+and all outputs finite.
+
+16
+00:02:10,400 --> 00:02:14,525
+Power state was not inspected or used as a gate.
+
+17
+00:02:14,525 --> 00:02:17,000
+The preceding route remains separately labelled.
+
+18
+00:02:17,000 --> 00:02:21,333
+The champion is locked by six production hashes.
+
+19
+00:02:21,333 --> 00:02:30,542
+A deterministic public-safe package excludes the unlicensed
+organizer attachment and private history and preserves both MIT
+licences.
+
+20
+00:02:30,542 --> 00:02:40,833
+Its public-safe gate passes 33 tests with one expected missing-input
+skip; a checksum-matched authorized-input copy passes all 101 tests.
+
+21
+00:02:40,833 --> 00:02:43,000
+Unsupported inputs fail closed.
+
+22
+00:02:43,000 --> 00:02:46,529
+We do not invent MFU, full-length reference equality, or
+cross-session causal speedups.
+
+23
+00:02:46,529 --> 00:02:51,529
+The result is device-specific; power state is not inspected or
+controlled, and every rejected idea stays explicit.
+
+24
+00:02:51,529 --> 00:02:58,000
+The contribution is a measured Apple-native Transformer path, a
+runnable giant row, and an evidence trail that makes every
+performance claim auditable.

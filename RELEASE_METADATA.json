@@ -1,11 +1,11 @@
 {
   "champion_status": "final_contention_controlled_exact_measurement_complete",
   "existing_private_git_history_distributed": false,
-  "manifest_file_count": 93,
+  "manifest_file_count": 99,
   "official_mfu_or_combined_score": null,
   "organizer_attachments_distributed": false,
   "production_code_commit": "622c47c",
   "publication_performed": false,
   "schema_version": 1,
-  "source_commit": "5574858b3c5bf40428312134d4657b939bc6b0fd"
+  "source_commit": "d9c5c666995a3c5c41edc26b2c3f4191efffce2f"
 }
